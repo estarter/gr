@@ -12,6 +12,7 @@ var config = require('../plugins/config.js'),
     tag = require('../plugins/tag.js'),
     status = require('../plugins/status.js'),
     diff = require('../plugins/diff.js'),
+    co_if_exists = require('../plugins/co_if_exists.js'),
     exportPlugin = require('../plugins/export.js'),
     importPlugin = require('../plugins/import.js');
 
@@ -56,6 +57,9 @@ gr.use(['status'], status);
 
 // diff plugin
 gr.use(['diff'], diff);
+
+// checkout-if-exists plugin
+gr.use(['co_if_exists'], co_if_exists);
 
 // tag manipulation
 gr.use(['tag', 'add'], tag.add);

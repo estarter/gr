@@ -51,6 +51,7 @@ module.exports = function(req, res, next) {
           tabtab.log(['get', 'set', 'add', 'rm', 'list'], data);
           break;
         case 'diff':
+        case 'co_if_exists':
           break;
         case 'status':
           tabtab.log(['-v'], data);
@@ -66,7 +67,7 @@ module.exports = function(req, res, next) {
             if (/^-\w?/.test(data.last)) {
               return tabtab.log(['t', '-json', '-', '-help', '-version', 'v', 'h'], data, '-');
             }
-            tabtab.log(['tag', 'list', 'status', 'diff', 'config', 'help', 'version'].concat(hashtags), data);
+            tabtab.log(['tag', 'list', 'status', 'diff', 'co_if_exists', 'config', 'help', 'version'].concat(hashtags), data);
           }
       }
     }
