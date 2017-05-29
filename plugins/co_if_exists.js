@@ -30,7 +30,7 @@ var print = function(msg, color, branch, req) {
 
 module.exports = function(req, res, next) {
   if (req.argv.length != 1) {
-    console.log("Specify branch name");
+    console.log('Specify branch name');
     return false;
   }
   var branch = req.argv[0];
@@ -44,24 +44,24 @@ module.exports = function(req, res, next) {
   var lines = task.toString().split('\n').filter(function(line) {
     return !!line.trim();
   });
-  if (lines.filter(line => line == "* " + branch).length > 0) {
+  if (lines.filter(line => line == '* ' + branch).length > 0) {
     print('no action', 'green', branch, req);
     return req.done();
   }
 
   var branches = lines.map(line => line.replace('*', '').trim());
-  if (branches.filter(line => line == branch || line == "remotes/origin/"+branch).length == 0) {
+  if (branches.filter(line => line == branch || line == 'remotes/origin/' + branch).length == 0) {
     print('skip - branch not found', 'red', branch, req);
     return req.done();
   }
 
   try {
     var err = new Buffer(1024);
-    var co = proc.execSync('git checkout -q ' + branch , {cwd: req.path, stdio: ['ignore','ignore','ignore']});
+    var co = proc.execSync('git checkout -q ' + branch, {cwd: req.path, stdio: ['ignore', 'ignore', 'ignore']});
     print('checkout', 'green', branch, req);
-  } catch(exception) {
+  } catch (exception) {
     print('checkout', 'red', branch, req);
-    console.log(" exception " + exception);
+    console.log(' exception ' + exception);
   }
 
   return req.done();
