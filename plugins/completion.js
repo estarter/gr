@@ -50,6 +50,8 @@ module.exports = function(req, res, next) {
         case 'config':
           tabtab.log(['get', 'set', 'add', 'rm', 'list'], data);
           break;
+        case 'diff':
+          break;
         case 'status':
           tabtab.log(['-v'], data);
           break;
@@ -64,7 +66,7 @@ module.exports = function(req, res, next) {
             if (/^-\w?/.test(data.last)) {
               return tabtab.log(['t', '-json', '-', '-help', '-version', 'v', 'h'], data, '-');
             }
-            tabtab.log(['tag', 'list', 'status', 'config', 'help', 'version'].concat(hashtags), data);
+            tabtab.log(['tag', 'list', 'status', 'diff', 'config', 'help', 'version'].concat(hashtags), data);
           }
       }
     }
