@@ -11,6 +11,7 @@ require('minilog').enable();
 var config = require('../plugins/config.js'),
     tag = require('../plugins/tag.js'),
     status = require('../plugins/status.js'),
+    diff = require('../plugins/diff.js'),
     exportPlugin = require('../plugins/export.js'),
     importPlugin = require('../plugins/import.js');
 
@@ -52,6 +53,9 @@ gr.use('list', require('../plugins/list.js'));
 
 // status plugin
 gr.use(['status'], status);
+
+// diff plugin
+gr.use(['diff'], diff);
 
 // tag manipulation
 gr.use(['tag', 'add'], tag.add);
