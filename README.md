@@ -228,6 +228,13 @@ Tags can also be specified more explicitly. For example `gr -t work -t play` is 
     gr help        Show this help
     gr version     Version info
 
+## Install develop version
+
+This command would install to your system from the source code:
+```bash
+npm install -g
+```
+
 ## Plugins
 
 TODO:
